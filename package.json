@@ -4,7 +4,7 @@
   "type": "module",
   "description": "OpenCode v2 TUI plugin showing NanoGPT usage and subscription usage",
   "license": "MIT",
-  "author": "LunaticMuch",
+  "author": "Stefano Cislaghi",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LunaticMuch/opencode-nanogpt-tui.git"
