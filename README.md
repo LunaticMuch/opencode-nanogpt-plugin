@@ -53,10 +53,10 @@ Example `opencode.jsonc`:
   "provider": {
     "nanogpt": {
       "options": {
-        "apiKey": "sk-..."
-      }
-    }
-  }
+        "apiKey": "sk-...",
+      },
+    },
+  },
 }
 ```
 
@@ -64,10 +64,10 @@ Example `opencode.jsonc`:
 
 All options can be set under `provider.nanogpt.options` in `opencode.jsonc`, or via environment variables.
 
-| Option | Values | Default | Env var | Description |
-| --- | --- | --- | --- | --- |
-| `usagePeriod` | `"last30Days"`, `"monthToDate"` | `"last30Days"` | `NANOGPT_USAGE_PERIOD` | Time range for usage statistics. |
-| `usageModelView` | `"byModel"`, `"lastDay"` | `"byModel"` | `NANOGPT_USAGE_MODEL_VIEW` | How to aggregate top models (`byModel` = over the selected period, `lastDay` = only today). |
+| Option           | Values                          | Default        | Env var                    | Description                                                                                 |
+| ---------------- | ------------------------------- | -------------- | -------------------------- | ------------------------------------------------------------------------------------------- |
+| `usagePeriod`    | `"last30Days"`, `"monthToDate"` | `"last30Days"` | `NANOGPT_USAGE_PERIOD`     | Time range for usage statistics.                                                            |
+| `usageModelView` | `"byModel"`, `"lastDay"`        | `"byModel"`    | `NANOGPT_USAGE_MODEL_VIEW` | How to aggregate top models (`byModel` = over the selected period, `lastDay` = only today). |
 
 ## Model setup
 
