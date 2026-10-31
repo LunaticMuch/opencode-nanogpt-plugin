@@ -1,0 +1,53 @@
+{
+  "name": "@lunaticmuch/opencode-nanogpt-plugin",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "OpenCode v2 TUI plugin showing NanoGPT usage and subscription usage",
+  "license": "MIT",
+  "author": "LunaticMuch",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LunaticMuch/opencode-nanogpt-tui.git"
+  },
+  "homepage": "https://github.com/LunaticMuch/opencode-nanogpt-tui",
+  "bugs": {
+    "url": "https://github.com/LunaticMuch/opencode-nanogpt-tui/issues"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "tui",
+    "nanogpt",
+    "nano-gpt",
+    "usage",
+    "plugin"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./tui": "./dist/tui.js"
+  },
+  "scripts": {
+    "build": "tsup src/tui.tsx --format esm --clean --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@opentui/core": ">=0.6.6",
+    "@opentui/solid": ">=0.6.6",
+    "solid-js": ">=1.9.0"
+  },
+  "dependencies": {
+    "@opencode/plugin": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
