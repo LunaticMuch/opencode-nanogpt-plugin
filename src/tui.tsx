@@ -231,7 +231,17 @@ export default Plugin.define({
       </box>
     )
 
-    context.ui.slot({ append: 'sidebar.content', render: () => <Panel /> })
+    if (context.ui?.slot) {
+      context.ui.slot({ append: 'sidebar.content', render: () => <Panel /> })
+    } else if (context.ui?.registerSlot) {
+      context.ui.registerSlot?.({ id: 'nanogpt-usage', append: 'sidebar.content', render: () => <Panel /> })
+    } else if (context.ui?.add) {
+      try {
+        context.ui.add({ append: 'sidebar.content', render: () => <Panel /> })
+      } catch {
+        /* ignore */
+      }
+    }
 
     const stopEvents = context.data.listen(({ details }: any) => {
       if (
