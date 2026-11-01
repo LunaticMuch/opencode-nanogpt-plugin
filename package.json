@@ -22,13 +22,21 @@
     "usage",
     "plugin"
   ],
+  "main": "./dist/tui.js",
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
   "exports": {
-    "./tui": "./dist/tui.js"
+    ".": {
+      "import": "./dist/tui.js",
+      "default": "./dist/tui.js"
+    },
+    "./tui": {
+      "import": "./dist/tui.js",
+      "default": "./dist/tui.js"
+    }
   },
   "scripts": {
     "build": "tsup src/tui.tsx --format esm --clean --outDir dist",
