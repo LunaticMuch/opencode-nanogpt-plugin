@@ -7,11 +7,11 @@
   "author": "Stefano Cislaghi",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LunaticMuch/opencode-nanogpt-tui.git"
+    "url": "git+https://github.com/LunaticMuch/opencode-nanogpt-plugin.git"
   },
-  "homepage": "https://github.com/LunaticMuch/opencode-nanogpt-tui",
+  "homepage": "https://github.com/LunaticMuch/opencode-nanogpt-plugin",
   "bugs": {
-    "url": "https://github.com/LunaticMuch/opencode-nanogpt-tui/issues"
+    "url": "https://github.com/LunaticMuch/opencode-nanogpt-plugin/issues"
   },
   "keywords": [
     "opencode",
