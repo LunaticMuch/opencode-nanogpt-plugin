@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.0...v1.1.1) (2026-11-01)
+
+
+### Bug Fixes
+
+* plugin root export ([#3](https://github.com/LunaticMuch/opencode-nanogpt-plugin/issues/3)) ([cd6a2b8](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/cd6a2b871a5971969bccd05288780805d98281f0))
+
 ## [1.1.0](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.0.0...v1.1.0) (2026-10-31)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@lunaticmuch/opencode-nanogpt-plugin",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "OpenCode v2 TUI plugin showing NanoGPT usage and subscription usage",
   "license": "MIT",
