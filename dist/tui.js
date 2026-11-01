@@ -80,6 +80,7 @@ function getUsageModelViewFromValue(v) {
 }
 
 // src/tui.tsx
+import { Fragment, jsx, jsxs } from "solid-js/jsx-runtime";
 var SUB_URL = "https://api.nano-gpt.com/api/subscription/v1/usage";
 var BALANCE_URL = "https://api.nano-gpt.com/api/check-balance";
 var REFRESH_MS = 6e4;
@@ -232,14 +233,79 @@ var tui_default = Plugin.define({
         setLoading(false);
       }
     }
-    const Panel = () => /* @__PURE__ */ React.createElement("box", { flexDirection: "column", padding: 0, gap: 0 }, /* @__PURE__ */ React.createElement("text", { fg: theme?.text?.base }, "NanoGPT Usage"), balance() && /* @__PURE__ */ React.createElement("text", null, "Balance: ", money(balance().usd_balance)), error() && /* @__PURE__ */ React.createElement("text", { fg: theme?.text?.error ?? "#ff5555" }, error()), usage() && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("text", { fg: theme?.text?.muted }, usage().from, " \u2192 ", usage().to, " (", usage().totals?.requests ?? 0, " req)"), /* @__PURE__ */ React.createElement("text", null, "Net ", money(usage().totals?.netCostUsd), " / gross ", money(usage().totals?.costUsd)), /* @__PURE__ */ React.createElement("text", null, "Tokens ", fmt(usage().totals?.totalTokens), " (in ", fmt(usage().totals?.inputTokens), ", out", " ", fmt(usage().totals?.outputTokens), ")"), topModels2(usage(), getUsageModelView()).length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("text", { fg: theme?.text?.muted }, "Top models:"), /* @__PURE__ */ React.createElement(For, { each: topModels2(usage(), getUsageModelView()) }, (m) => /* @__PURE__ */ React.createElement("text", null, "\u2022 ", m.model, ": ", m.requests, " ", money(m.netCostUsd))))), sub() && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("text", { fg: theme?.text?.muted }, "Subscription: ", sub().state, " ", sub().active ? "(active)" : ""), /* @__PURE__ */ React.createElement("text", null, "Quota: ", bar(sub().weeklyInputTokens?.percentUsed)), /* @__PURE__ */ React.createElement("text", null, quotaLine(sub().weeklyInputTokens)), sub().period?.currentPeriodEnd && /* @__PURE__ */ React.createElement("text", null, "Period ends ", new Date(sub().period.currentPeriodEnd).toLocaleString())), lastRefresh() && /* @__PURE__ */ React.createElement("text", { fg: theme?.text?.faint ?? theme?.text?.muted }, "Updated ", new Date(lastRefresh()).toLocaleTimeString()));
+    const Panel = () => /* @__PURE__ */ jsxs("box", { flexDirection: "column", padding: 0, gap: 0, children: [
+      /* @__PURE__ */ jsx("text", { fg: theme?.text?.base, children: "NanoGPT Usage" }),
+      balance() && /* @__PURE__ */ jsxs("text", { children: [
+        "Balance: ",
+        money(balance().usd_balance)
+      ] }),
+      error() && /* @__PURE__ */ jsx("text", { fg: theme?.text?.error ?? "#ff5555", children: error() }),
+      usage() && /* @__PURE__ */ jsxs(Fragment, { children: [
+        /* @__PURE__ */ jsxs("text", { fg: theme?.text?.muted, children: [
+          usage().from,
+          " \u2192 ",
+          usage().to,
+          " (",
+          usage().totals?.requests ?? 0,
+          " req)"
+        ] }),
+        /* @__PURE__ */ jsxs("text", { children: [
+          "Net ",
+          money(usage().totals?.netCostUsd),
+          " / gross ",
+          money(usage().totals?.costUsd)
+        ] }),
+        /* @__PURE__ */ jsxs("text", { children: [
+          "Tokens ",
+          fmt(usage().totals?.totalTokens),
+          " (in ",
+          fmt(usage().totals?.inputTokens),
+          ", out",
+          " ",
+          fmt(usage().totals?.outputTokens),
+          ")"
+        ] }),
+        topModels2(usage(), getUsageModelView()).length > 0 && /* @__PURE__ */ jsxs(Fragment, { children: [
+          /* @__PURE__ */ jsx("text", { fg: theme?.text?.muted, children: "Top models:" }),
+          /* @__PURE__ */ jsx(For, { each: topModels2(usage(), getUsageModelView()), children: (m) => /* @__PURE__ */ jsxs("text", { children: [
+            "\u2022 ",
+            m.model,
+            ": ",
+            m.requests,
+            " ",
+            money(m.netCostUsd)
+          ] }) })
+        ] })
+      ] }),
+      sub() && /* @__PURE__ */ jsxs(Fragment, { children: [
+        /* @__PURE__ */ jsxs("text", { fg: theme?.text?.muted, children: [
+          "Subscription: ",
+          sub().state,
+          " ",
+          sub().active ? "(active)" : ""
+        ] }),
+        /* @__PURE__ */ jsxs("text", { children: [
+          "Quota: ",
+          bar(sub().weeklyInputTokens?.percentUsed)
+        ] }),
+        /* @__PURE__ */ jsx("text", { children: quotaLine(sub().weeklyInputTokens) }),
+        sub().period?.currentPeriodEnd && /* @__PURE__ */ jsxs("text", { children: [
+          "Period ends ",
+          new Date(sub().period.currentPeriodEnd).toLocaleString()
+        ] })
+      ] }),
+      lastRefresh() && /* @__PURE__ */ jsxs("text", { fg: theme?.text?.faint ?? theme?.text?.muted, children: [
+        "Updated ",
+        new Date(lastRefresh()).toLocaleTimeString()
+      ] })
+    ] });
     if (context.ui?.slot) {
-      context.ui.slot({ append: "sidebar.content", render: () => /* @__PURE__ */ React.createElement(Panel, null) });
+      context.ui.slot({ append: "sidebar.content", render: () => /* @__PURE__ */ jsx(Panel, {}) });
     } else if (context.ui?.registerSlot) {
-      context.ui.registerSlot?.({ id: "nanogpt-usage", append: "sidebar.content", render: () => /* @__PURE__ */ React.createElement(Panel, null) });
+      context.ui.registerSlot?.({ id: "nanogpt-usage", append: "sidebar.content", render: () => /* @__PURE__ */ jsx(Panel, {}) });
     } else if (context.ui?.add) {
       try {
-        context.ui.add({ append: "sidebar.content", render: () => /* @__PURE__ */ React.createElement(Panel, null) });
+        context.ui.add({ append: "sidebar.content", render: () => /* @__PURE__ */ jsx(Panel, {}) });
       } catch {
       }
     }

@@ -39,7 +39,7 @@
     }
   },
   "scripts": {
-    "build": "tsup src/tui.tsx --format esm --clean --outDir dist",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
