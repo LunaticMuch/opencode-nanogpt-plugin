@@ -243,33 +243,50 @@ export default Plugin.define({
       }
     }
 
-    const stopEvents = context.data.listen(({ details }: any) => {
-      if (
-        details?.type === 'session.execution.succeeded' ||
-        details?.type === 'session.execution.failed'
-      ) {
-        void refresh()
+    let stopEvents: (() => void) | undefined
+    try {
+      if (context.data?.listen && typeof context.data.listen === 'function') {
+        stopEvents = context.data.listen(({ details }: any) => {
+          if (
+            details?.type === 'session.execution.succeeded' ||
+            details?.type === 'session.execution.failed'
+          ) {
+            void refresh()
+          }
+        })
       }
-    })
+    } catch {
+      /* ignore */
+    }
 
     void refresh()
     const timer = setInterval(() => void refresh(), REFRESH_MS)
 
-    context.keymap.layer(() => ({
-      mode: 'global',
-      commands: [
-        {
-          id: 'nanogpt.usage.refresh',
-          title: 'Refresh NanoGPT usage',
-          group: 'NanoGPT',
-          palette: true,
-          run: () => void refresh(),
-        },
-      ],
-    }))
+    try {
+      if (context.keymap?.layer && typeof context.keymap.layer === 'function') {
+        context.keymap.layer(() => ({
+          mode: 'global',
+          commands: [
+            {
+              id: 'nanogpt.usage.refresh',
+              title: 'Refresh NanoGPT usage',
+              group: 'NanoGPT',
+              palette: true,
+              run: () => void refresh(),
+            },
+          ],
+        }))
+      }
+    } catch {
+      /* ignore */
+    }
 
     return () => {
-      stopEvents()
+      try {
+        stopEvents?.()
+      } catch {
+        /* ignore */
+      }
       clearInterval(timer)
     }
   },
