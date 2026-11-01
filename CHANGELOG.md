@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.3...v1.1.4) (2026-11-01)
+
+
+### Bug Fixes
+
+* use solid-js automatic jsx transform to avoid React global ([f09d53b](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/f09d53b6e39658708a639a63001851ab2cde9abf))
+
 ## [1.1.3](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.2...v1.1.3) (2026-11-01)
 
 
