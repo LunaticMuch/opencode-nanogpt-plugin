@@ -7,11 +7,11 @@
   "author": "Stefano Cislaghi",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LunaticMuch/opencode-nanogpt-tui.git"
+    "url": "git+https://github.com/LunaticMuch/opencode-nanogpt-plugin.git"
   },
-  "homepage": "https://github.com/LunaticMuch/opencode-nanogpt-tui",
+  "homepage": "https://github.com/LunaticMuch/opencode-nanogpt-plugin",
   "bugs": {
-    "url": "https://github.com/LunaticMuch/opencode-nanogpt-tui/issues"
+    "url": "https://github.com/LunaticMuch/opencode-nanogpt-plugin/issues"
   },
   "keywords": [
     "opencode",
@@ -22,13 +22,21 @@
     "usage",
     "plugin"
   ],
+  "main": "./dist/tui.js",
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
   "exports": {
-    "./tui": "./dist/tui.js"
+    ".": {
+      "import": "./dist/tui.js",
+      "default": "./dist/tui.js"
+    },
+    "./tui": {
+      "import": "./dist/tui.js",
+      "default": "./dist/tui.js"
+    }
   },
   "scripts": {
     "build": "tsup src/tui.tsx --format esm --clean --outDir dist",
