@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.2](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.1...v1.1.2) (2026-11-01)
+
+
+### Bug Fixes
+
+* handle missing ui.slot gracefully ([24f2107](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/24f21074913f7ab488fe47c21cc79beeff3d49db))
+* handle missing ui.slot gracefully ([8149d82](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/8149d823f796b6b9b9d10df66ceec207ba178cd7))
+* workflow_dispatch trigger to publish.yml ([a5a838d](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/a5a838dd0d574ae680a9793116621b05e5bc0243))
+
 ## [1.1.1](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.0...v1.1.1) (2026-11-01)
 
 
