@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.2...v1.1.3) (2026-11-01)
+
+
+### Bug Fixes
+
+* guard context.data.listen and keymap.layer ([a480bea](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/a480beae30353b5abafd5d0104445c6fdbbb0b3c))
+
 ## [1.1.2](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.1...v1.1.2) (2026-11-01)
 
 
