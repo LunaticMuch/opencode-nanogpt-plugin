@@ -237,17 +237,8 @@ export default Plugin.define({
 
     try {
       const ui = context?.ui
-      const slot = ui?.slot || ui?.registerSlot || ui?.add || ui?.mount
-      if (typeof slot === 'function') {
-        try {
-          slot.call(ui, { append: 'sidebar.content', render: () => <Panel /> })
-        } catch {}
-        try {
-          slot.call(ui, 'sidebar.content', () => <Panel />)
-        } catch {}
-        try {
-          slot.call(ui, { id: 'nanogpt-usage', append: 'sidebar.content', render: () => <Panel /> })
-        } catch {}
+      if (typeof ui?.slot === 'function') {
+        ui.slot({ append: 'sidebar.content', render: () => <Panel /> })
       }
     } catch {
       /* ignore */
