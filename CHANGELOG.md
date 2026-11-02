@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.4...v1.1.5) (2026-11-01)
+
+
+### Miscellaneous Chores
+
+* update package-lock.json ([e4c5a7e](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/e4c5a7eba37e47900d31a6c698abb59f4bb8fc82))
+
 ## [1.1.4](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.3...v1.1.4) (2026-11-01)
 
 
