@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.7](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.6...v1.1.7) (2026-11-02)
+
+
+### Bug Fixes
+
+* build exports ([b3c6c7e](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/b3c6c7e22d9bbe57be81993dc1b777e6d1c1de3a))
+* multiple slots ([8ec9849](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/8ec9849c43c0c4d00264ab6c422c6926ffbd0167))
+
 ## [1.1.6](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.5...v1.1.6) (2026-11-02)
 
 
