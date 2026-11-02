@@ -1,6 +1,6 @@
 {
   "name": "@lunaticmuch/opencode-nanogpt-plugin",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "type": "module",
   "description": "OpenCode v2 TUI plugin showing NanoGPT usage and subscription usage",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "usage",
     "plugin"
   ],
-  "main": "./dist/tui.js",
+  "main": "./dist/index.js",
   "files": [
     "dist",
     "README.md",
@@ -30,8 +30,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/tui.js",
-      "default": "./dist/tui.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./tui": {
       "import": "./dist/tui.js",

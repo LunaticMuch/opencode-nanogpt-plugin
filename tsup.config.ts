@@ -1,12 +1,12 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: ['src/tui.tsx'],
+  entry: ['src/index.ts', 'src/tui.tsx'],
   format: ['esm'],
   clean: true,
   outDir: 'dist',
   esbuildOptions(options) {
     options.jsx = 'automatic'
-    options.jsxImportSource = 'solid-js'
+    options.jsxImportSource = '@opentui/solid'
   },
 })

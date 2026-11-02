@@ -79,13 +79,17 @@ export default Plugin.define({
       /* ignore */
     }
 
-    const [apiKey, setApiKey] = createRoot(() => createSignal<string | undefined>(getApiKey()))
-    const [usage, setUsage] = createRoot(() => createSignal<any>(null))
-    const [sub, setSub] = createRoot(() => createSignal<any>(null))
-    const [balance, setBalance] = createRoot(() => createSignal<any>(null))
-    const [error, setError] = createRoot(() => createSignal<string | null>(null))
-    const [_loading, setLoading] = createRoot(() => createSignal(true))
-    const [lastRefresh, setLastRefresh] = createRoot(() => createSignal<number | null>(null))
+    let disposeSolid: (() => void) | undefined
+    const [apiKey, setApiKey] = createRoot((dispose) => {
+      disposeSolid = dispose
+      return createSignal<string | undefined>(getApiKey())
+    })
+    const [usage, setUsage] = createSignal<any>(null)
+    const [sub, setSub] = createSignal<any>(null)
+    const [balance, setBalance] = createSignal<any>(null)
+    const [error, setError] = createSignal<string | null>(null)
+    const [_loading, setLoading] = createSignal(true)
+    const [lastRefresh, setLastRefresh] = createSignal<number | null>(null)
 
     async function fetchJson(url: string, key: string) {
       const controller = new AbortController()
@@ -184,8 +188,8 @@ export default Plugin.define({
         <text fg={theme?.text?.base}>NanoGPT Usage</text>
         {balance() && <text>Balance: {money(balance().usd_balance)}</text>}
         {error() && <text fg={theme?.text?.error ?? '#ff5555'}>{error()}</text>}
-        {usage() && (
-          <>
+        {usage() ? (
+          <box flexDirection="column">
             <text fg={theme?.text?.muted}>
               {usage().from} → {usage().to} ({usage().totals?.requests ?? 0} req)
             </text>
@@ -197,7 +201,7 @@ export default Plugin.define({
               {fmt(usage().totals?.outputTokens)})
             </text>
             {topModels(usage(), getUsageModelView()).length > 0 && (
-              <>
+              <box flexDirection="column">
                 <text fg={theme?.text?.muted}>Top models:</text>
                 <For each={topModels(usage(), getUsageModelView())}>
                   {(m: any) => (
@@ -207,12 +211,12 @@ export default Plugin.define({
                     </text>
                   )}
                 </For>
-              </>
+              </box>
             )}
-          </>
-        )}
-        {sub() && (
-          <>
+          </box>
+        ) : null}
+        {sub() ? (
+          <box flexDirection="column">
             <text fg={theme?.text?.muted}>
               Subscription: {sub().state} {sub().active ? '(active)' : ''}
             </text>
@@ -221,8 +225,8 @@ export default Plugin.define({
             {sub().period?.currentPeriodEnd && (
               <text>Period ends {new Date(sub().period.currentPeriodEnd).toLocaleString()}</text>
             )}
-          </>
-        )}
+          </box>
+        ) : null}
         {lastRefresh() && (
           <text fg={theme?.text?.faint ?? theme?.text?.muted}>
             Updated {new Date(lastRefresh()!).toLocaleTimeString()}
@@ -231,16 +235,22 @@ export default Plugin.define({
       </box>
     )
 
-    if (context.ui?.slot) {
-      context.ui.slot({ append: 'sidebar.content', render: () => <Panel /> })
-    } else if (context.ui?.registerSlot) {
-      context.ui.registerSlot?.({ id: 'nanogpt-usage', append: 'sidebar.content', render: () => <Panel /> })
-    } else if (context.ui?.add) {
-      try {
-        context.ui.add({ append: 'sidebar.content', render: () => <Panel /> })
-      } catch {
-        /* ignore */
+    try {
+      const ui = context?.ui
+      const slot = ui?.slot || ui?.registerSlot || ui?.add || ui?.mount
+      if (typeof slot === 'function') {
+        try {
+          slot.call(ui, { append: 'sidebar.content', render: () => <Panel /> })
+        } catch {}
+        try {
+          slot.call(ui, 'sidebar.content', () => <Panel />)
+        } catch {}
+        try {
+          slot.call(ui, { id: 'nanogpt-usage', append: 'sidebar.content', render: () => <Panel /> })
+        } catch {}
       }
+    } catch {
+      /* ignore */
     }
 
     let stopEvents: (() => void) | undefined
@@ -287,7 +297,16 @@ export default Plugin.define({
       } catch {
         /* ignore */
       }
-      clearInterval(timer)
+      try {
+        clearInterval(timer)
+      } catch {
+        /* ignore */
+      }
+      try {
+        disposeSolid?.()
+      } catch {
+        /* ignore */
+      }
     }
   },
 })
