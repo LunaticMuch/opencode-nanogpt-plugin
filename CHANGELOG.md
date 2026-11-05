@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.8](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.7...v1.1.8) (2026-11-05)
+
+
+### Bug Fixes
+
+* wrap all signals in single reactive root to restore TUI reactivity ([#11](https://github.com/LunaticMuch/opencode-nanogpt-plugin/issues/11)) ([494443a](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/494443a48998100a621afa6aa82bdbb4f519119c))
+
 ## [1.1.7](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.6...v1.1.7) (2026-11-02)
 
 
