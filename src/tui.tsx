@@ -80,16 +80,24 @@ export default Plugin.define({
     }
 
     let disposeSolid: (() => void) | undefined
-    const [apiKey, setApiKey] = createRoot((dispose) => {
+    const root = createRoot((dispose) => {
       disposeSolid = dispose
-      return createSignal<string | undefined>(getApiKey())
+      const [apiKey, setApiKey] = createSignal<string | undefined>(getApiKey())
+      const [usage, setUsage] = createSignal<any>(null)
+      const [sub, setSub] = createSignal<any>(null)
+      const [balance, setBalance] = createSignal<any>(null)
+      const [error, setError] = createSignal<string | null>(null)
+      const [_loading, setLoading] = createSignal(true)
+      const [lastRefresh, setLastRefresh] = createSignal<number | null>(null)
+      return { apiKey, setApiKey, usage, setUsage, sub, setSub, balance, setBalance, error, setError, _loading, setLoading, lastRefresh, setLastRefresh }
     })
-    const [usage, setUsage] = createSignal<any>(null)
-    const [sub, setSub] = createSignal<any>(null)
-    const [balance, setBalance] = createSignal<any>(null)
-    const [error, setError] = createSignal<string | null>(null)
-    const [_loading, setLoading] = createSignal(true)
-    const [lastRefresh, setLastRefresh] = createSignal<number | null>(null)
+    const [apiKey, setApiKey] = [root.apiKey, root.setApiKey] as any
+    const [usage, setUsage] = [root.usage, root.setUsage] as any
+    const [sub, setSub] = [root.sub, root.setSub] as any
+    const [balance, setBalance] = [root.balance, root.setBalance] as any
+    const [error, setError] = [root.error, root.setError] as any
+    const [_loading, setLoading] = [root._loading, root.setLoading] as any
+    const [lastRefresh, setLastRefresh] = [root.lastRefresh, root.setLastRefresh] as any
 
     async function fetchJson(url: string, key: string) {
       const controller = new AbortController()

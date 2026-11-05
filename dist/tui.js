@@ -1,6 +1,6 @@
 import {
   tui_default
-} from "./chunk-UVIS3TL6.js";
+} from "./chunk-K4WSUAFD.js";
 export {
   tui_default as default
 };
