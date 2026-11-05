@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.9](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.8...v1.1.9) (2026-11-05)
+
+
+### Miscellaneous Chores
+
+* snippets ([5dcccb9](https://github.com/LunaticMuch/opencode-nanogpt-plugin/commit/5dcccb933706e03b337a5fe279a9b65fc9ddb9c8))
+
 ## [1.1.8](https://github.com/LunaticMuch/opencode-nanogpt-plugin/compare/v1.1.7...v1.1.8) (2026-11-05)
 
 
